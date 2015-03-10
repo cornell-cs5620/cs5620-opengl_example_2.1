@@ -1,0 +1,20 @@
+#version 120
+
+varying vec2 brick_coord;
+
+uniform float brick_size;
+uniform vec3 brick_color;
+uniform vec3 mortar_color;
+uniform vec2 brick_pct;
+
+void main() 
+{
+	vec2 interp = brick_coord/brick_size;
+	if (fract(interp.y * 0.5) > 0.5)
+		interp.x += 0.5;
+		
+	interp = step(fract(interp), brick_pct);
+
+	gl_FragColor = vec4(mix(mortar_color, brick_color, interp.x*interp.y), 1.0);
+} 
+
