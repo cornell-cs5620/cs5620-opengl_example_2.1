@@ -29,7 +29,6 @@ void init(string working_directory)
 	program = glCreateProgram();
 	glAttachShader(program, vertex);
 	glAttachShader(program, fragment);
-	glBindFragDataLocation(program, 0, "frag_color");
 	glLinkProgram(program);
 
 	// Load the geometry of a sphere
